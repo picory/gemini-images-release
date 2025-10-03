@@ -1,0 +1,59 @@
+{
+  "urls": {
+    "preload": "https://google.com",
+    "gemini": "https://gemini.google.com/"
+  },
+  "userAgents": {
+    "context": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+    "persistent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  },
+  "chromePaths": [
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "/Applications/Chrome.app/Contents/MacOS/Chrome",
+    "/usr/bin/google-chrome",
+    "/usr/bin/chrome",
+    "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
+  ],
+  "launchArgs": {
+    "default": [
+      "--disable-blink-features=AutomationControlled",
+      "--disable-extensions",
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu",
+      "--remote-debugging-port=0",
+      "--disable-web-security",
+      "--disable-features=VizDisplayCompositor"
+    ],
+    "persistent": [
+      "--disable-blink-features=AutomationControlled",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-default-apps",
+      "--disable-popup-blocking",
+      "--disable-translate",
+      "--disable-background-timer-throttling",
+      "--disable-renderer-backgrounding",
+      "--disable-backgrounding-occluded-windows",
+      "--disable-ipc-flooding-protection",
+      "--enable-features=NetworkService",
+      "--remote-debugging-port=0",
+      "--disable-dev-shm-usage",
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-web-security",
+      "--disable-features=VizDisplayCompositor",
+      "--ignore-certificate-errors",
+      "--ignore-ssl-errors",
+      "--ignore-certificate-errors-spki-list",
+      "--ignore-certificate-errors-ssl",
+      "--allow-running-insecure-content"
+    ]
+  },
+  "timeouts": {
+    "navigate_dom": 15000,
+    "navigate_gemini": 20000,
+    "post_gemini_wait_ms": 5000
+  }
+}

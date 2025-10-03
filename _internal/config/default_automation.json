@@ -1,0 +1,14 @@
+{
+  "timeouts": {
+    "navigate_dom": 15000,
+    "navigate_gemini": 20000,
+    "post_gemini_wait_ms": 5000,
+    "wait_for_chat_interface_total": 60,
+    "wait_for_image_attachments": 45,
+    "wait_for_initial_response": 90,
+    "retry_wait_between_ms": 3000
+  },
+  "thresholds": {
+    "min_candidate_px": 400
+  }
+}
