@@ -22,7 +22,7 @@ Google Gemini 웹페이지를 활용하여 모델 이미지와 상품 이미지�
 ### 설치 파일 다운로드
 
 - **최신 릴리스**: [GitHub Releases](https://github.com/picory/gemini-images-release/releases/latest)
-- **기본 앱 설치 파일**: [GeminiImagesInstaller.exe](https://github.com/picory/gemini-images-release/releases/download/1.0.11/GeminiImagesInstaller.exe)
+- **기본 앱 설치 파일**: [GeminiImagesInstaller.exe](https://github.com/picory/gemini-images-release/releases/download/1.3.0/GeminiImagesLauncher.exe)
 - **Chrome 확장 프로그램**: [오버링크 썸네일 헬퍼](https://chromewebstore.google.com/detail/%EC%98%A4%EB%B2%84%EB%A7%81%ED%81%AC-%EC%8D%B8%EB%84%A4%EC%9D%BC-%ED%97%AC%ED%8D%BC/emjolgbjdaanhiihkaecbmmebpgpggmf?authuser=0&hl=en)
 - 실행 파일(`.exe`)을 다운로드하여 별도의 설치 없이 사용 가능
 
