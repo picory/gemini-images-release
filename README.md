@@ -130,6 +130,6 @@ GeminiImages/
 
 ## 버전 정보
 
-- **현재 버전**: 1.0.11
+- **현재 버전**: 1.3.0
 - **업데이트 확인**: GUI 런처에서 "업데이트 확인" 버튼 클릭
 - **변경 내역**: [GitHub Releases](https://github.com/picory/gemini-images-release/releases)
