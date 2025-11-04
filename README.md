@@ -1,88 +1,42 @@
-# Gemini Images - AI 기반 모델 이미지 생성 도구
+# Gemini Images - AI 이미지 생성 자동화 도구
 
-Google Gemini 웹페이지를 활용하여 모델 이미지와 상품 이미지를 합성하여 자연스러운 착용 이미지를 생성하는 자동화 도구입니다.
+Google Gemini를 활용하여 이미지를 자동으로 업로드하고 AI 기반 이미지를 생성하는 Windows 자동화 애플리케이션입니다.
 
 ## 주요 기능
 
-- **자동 이미지 생성**: 모델 이미지와 상품 이미지를 결합하여 AI 기반 착용 이미지 생성
-- **FastAPI 기반 REST API 서버**: 외부 시스템과의 연동을 위한 웹 API 제공
-- **GUI 런처**: 사용자 친화적인 GUI를 통한 서버 관리
-- **모델 이미지 관리**: 여러 모델 이미지를 등록하고 관리
-- **자동 업데이트**: GitHub 릴리스를 통한 자동 업데이트 기능
-- **라이선스 인증**: 시리얼 키 기반 라이선스 검증 시스템
+### 1. 자동화된 워크플로우
 
-## 시스템 요구사항
+- Google Gemini 웹사이트 자동 접속 및 로그인
+- 여러 이미지 파일 자동 업로드
+- 사용자 정의 프롬프트 자동 전송
+- AI 생성 이미지 자동 다운로드 및 저장
 
-### 필수 구성 요소
+### 2. 스마트 세션 관리
 
-1. **Python**: 3.10 이상
-2. **Google Chrome**: Playwright를 통한 브라우저 자동화에 필요
-3. **Google API Key**: Gemini API 사용을 위한 인증 키
+- **기존 Chrome 세션 활용**: 이미 로그인된 Chrome 프로필 사용으로 반복 로그인 불필요
+- **프로필 자동 복사**: Chrome 실행 중에도 쿠키 및 로그인 정보 자동 복사
+- **세션 선택 옵션**: 기존 세션 활용 또는 새로운 세션 시작 선택 가능
 
-### 설치 파일 다운로드
+### 3. 지능형 이미지 업로드
 
-- **크롬 확장 프로그램 추가**: [오버링크 썸네일 헬퍼](https://chromewebstore.google.com/detail/%EC%98%A4%EB%B2%84%EB%A7%81%ED%81%AC-%EC%8D%B8%EB%84%A4%EC%9D%BC-%ED%97%AC%ED%8D%BC/emjolgbjdaanhiihkaecbmmebpgpggmf?authuser=0&hl=en)
-- **기본 윈도우 프로그램 설치 파일**: [GeminiImagesInstaller.exe](https://github.com/picory/gemini-images-release/releases/download/1.3.0/GeminiImagesLauncher.exe)
-- 실행 파일(`.exe`)을 다운로드하여 별도의 설치 없이 사용 가능
-- **최신 릴리스 (자동 업데이트 버전)**: [GitHub Releases](https://github.com/picory/gemini-images-release/releases/latest)
+- **다단계 업로드 시도**: 클립보드 붙여넣기 → 파일 선택 대화상자 → 수동 업로드
+- **클립보드 자동 복사**: 이미지를 자동으로 클립보드에 복사하여 간편한 붙여넣기
+- **안정적인 업로드**: 여러 방식을 순차적으로 시도하여 성공률 극대화
 
-## 설치 방법
+### 4. 자동 이미지 다운로드
 
-### 방법 1: 실행 파일 사용 (권장)
+- **스마트 감지**: Blob URL, Base64, Google 이미지 서버 등 다양한 이미지 소스 자동 감지
+- **필터링**: 크기 기반 필터로 아이콘 등 불필요한 이미지 제외
+- **자동 저장**: 타임스탬프가 포함된 파일명으로 `generated_images/` 폴더에 자동 저장
+- **다양한 형식 지원**: PNG, JPG, WebP 등 모든 주요 이미지 형식 지원
 
-1. [GitHub Releases](https://github.com/picory/gemini-images-release/releases/latest)에서 최신 `.exe` 파일 다운로드
-2. 다운로드한 파일 실행
-3. 시리얼 키 입력 및 인증
+## 사용 방법
 
-### 방법 2: 소스 코드에서 실행
+### 기본 앱 설치
 
-#### 1. 저장소 클론
-
-```bash
-git clone https://github.com/picory/gemini-images-release.git
-cd gemini-images
-```
-
-#### GUI 기능
-
-- **데이터 기본 경로**: 생성된 이미지 및 모델 이미지가 저장되는 디렉토리 설정
-- **서버 포트**: API 서버가 실행될 포트 번호 (기본값: 9998)
-- **자동 실행**: 프로그램 시작 시 서버 자동 시작
-- **임시 파일 삭제**: 프로그램 시작 시 생성된 이미지 자동 삭제
-- **API 문서 열기**: FastAPI 자동 생성 문서(`/docs`) 열기
-- **업데이트 확인**: 수동으로 새 버전 확인
-- **설정**: 타임아웃 등 자동화 관련 설정 조정
-- **시리얼 등록**: 라이선스 키 입력 및 인증
-
-### API 엔드포인트
-
-서버 실행 후 `http://localhost:9998/docs`에서 전체 API 문서 확인 가능
-
-#### 주요 API
-
-- `POST /generate`: 파일 업로드를 통한 이미지 생성
-- `POST /generate-by-url`: URL 기반 이미지 생성
-- `POST /models`: 모델 이미지 등록
-- `GET /models`: 등록된 모델 이미지 목록 조회
-- `GET /models/{model_id}`: 특정 모델 이미지 조회
-- `PUT /models/{model_id}`: 모델 이미지 수정
-- `DELETE /models/{model_id}`: 모델 이미지 삭제
-
-#### API 사용 예시
-
-```bash
-# 모델 이미지 등록
-curl -X POST "http://localhost:9998/models"   -F "image=@model.jpg"   -F "name=전신 모델 남"
-
-# URL 기반 이미지 생성
-curl -X POST "http://localhost:9998/generate-by-url"   -H "Content-Type: application/json"   -d '{
-    "site": "your-site",
-    "model_url": "http://localhost:9998/model-images/abc123.jpg",
-    "product_url": ["https://example.com/product.jpg"],
-    "return_count": 2,
-    "headless": true
-  }'
-```
+1. [크롬 확장프로그램 설치](https://chromewebstore.google.com/detail/%EC%98%A4%EB%B2%84%EB%A7%81%ED%81%AC-%EC%8D%B8%EB%84%A4%EC%9D%BC-%ED%97%AC%ED%8D%BC/emjolgbjdaanhiihkaecbmmebpgpggmf)
+2. [윈도우 프로그램 설치](https://github.com/picory/gemini-images-release/releases/download/1.0.5/GeminiImagesInstaller.exe)
+3. 시리얼키 획득 : 카카오톡(@bitsense), [카톡 오픈채팅](https://open.kakao.com/o/gK4VlRZh)
 
 ## 프로젝트 구조
 
@@ -101,35 +55,55 @@ GeminiImages/
 - **Windows**: `%APPDATA%\GeminiImages\config\`
 - **Linux/Mac**: `~/.config/GeminiImages/`
 
-주요 설정 파일:
+### 기본 실행
 
-- `launcher.bin` / `launcher.json`: 런처 설정 (자동 실행, 라이선스 키 등)
-- `automation.bin` / `automation.json`: 자동화 타임아웃 설정
-- `update.json`: 자동 업데이트 설정
-- `test-prompt.json`: 프롬프트 테스트 파일(우선으로 확인)
+1. 프로그램 실행 (최초 실행시 시리얼키 입력 및 인증 필요)
+2. 프롬프트 관리 확인
+   - 이미지 생성시 사용할 프롬프트 확인
+   - 중앙 서버 제공 프롬프트 확인
+3. 웹페이지 접속 (공식지원. overlink.kr 접속):
+   - 등록전 상품관리. 수정할 상품 선택
+   - 모델 이미지 및 프롬프트 선택
+4. 썸네일 생성 상태 레이어 창 확인 및 대기
+5. 상태 레이어창 종료 확인시 상품 썸네일 확인
 
-## 문제 해결
+# 프롬프트
 
-### 라이선스 인증 실패
+- 페르소나 = "원하는 AI 역할 설정"
+- 포지티브 = "AI 이미지 생성시 해야할 일들"
+- 네거티브 = "AI 이미지 생성시 주의하거나 하지 말아야할 일들"
 
-- 시리얼 키 형식: `XXXX-XXXX-XXXX-XXXX`
-- 문제 지속 시: bitsense@kakao.com 문의
+## 주요 개선 사항
 
-### 로그 확인
+### 세션 관리 개선
 
-- 로그 파일 위치: `logs/app_YYYYMMDD.log`
+- **ProcessSingleton 오류 해결**: Chrome 실행 상태를 자동 감지하여 프로필 충돌 방지
+- **프로필 자동 복사**: Chrome 실행 중에도 쿠키 및 로그인 정보 자동 복사로 원활한 세션 유지
+- **Windows 경로 지원**: Windows 사용자 프로필 경로 자동 감지 및 처리
 
-## 라이선스
+### 이미지 업로드 안정성 향상
 
-이 프로젝트는 상용 라이선스로 보호됩니다. 시리얼 키 구매 및 문의는 bitsense@kakao.com으로 연락 주세요.
+- **다단계 업로드 전략**: 클립보드 → 파일 선택 → 수동 업로드 순차 시도
+- **클립보드 자동화**: 이미지를 자동으로 클립보드에 복사하여 간편한 붙여넣기
+- **에러 핸들링**: 각 단계별 실패 시 대안 방법 자동 실행
 
-## 지원 및 문의
+### 자동 다운로드 기능
 
-- **이슈 리포트**: [GitHub Issues](https://github.com/picory/gemini-images-release/issues)
-- **이메일**: bitsense@kakao.com
+- **다양한 이미지 소스 지원**: Blob URL, Base64, Google 이미지 서버 등
+- **스마트 필터링**: 크기 기반 필터로 불필요한 이미지 제외
+- **자동 파일명 생성**: 타임스탬프와 설명을 조합한 고유 파일명
+- **결과 리포트**: 다운로드 완료 후 저장된 파일 목록 자동 표시
 
-## 버전 정보
+### 브라우저 호환성
 
-- **현재 버전**: 1.3.0
-- **업데이트 확인**: GUI 런처에서 "업데이트 확인" 버튼 클릭
-- **변경 내역**: [GitHub Releases](https://github.com/picory/gemini-images-release/releases)
+- **Chrome 우선 사용**: Google 로그인 문제 해결을 위한 Chrome 사용
+- **자동 폴백**: Chrome 없을 시 Chromium으로 자동 전환
+- **크로스 플랫폼**: Windows, macOS 경로 자동 감지
+
+## 참고사항
+
+- Chrome 브라우저 및 확장 프로그램이 설치되어 있어야 합니다
+- 첫 실행 시 Google 계정 로그인이 필요할 수 있습니다
+- 네트워크 상태에 따라 실행 시간이 달라질 수 있습니다
+- 생성된 이미지는 `generated_images/` 폴더에 자동 저장됩니다
+- 브라우저 창에서 수동 조작이 가능합니다
